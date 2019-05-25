@@ -18,9 +18,9 @@ if [ $USER = "root" ]; then
 	echo '==> Copying source folder into /usr/lib/gwallpaper'
 	cp -r ./ /usr/lib/gwallpaper && echo '  -> Source folder copied!' || echo '  -> Source folder not copied :('
 
-	if [ -e /usr/bin/gwallpaper ]; then
+	if [ -e /usr/bin/wallpaper ]; then
 		echo '==> Removing old link'
-		rm /usr/bin/gwallpaper && echo '  -> Old link removed!' || echo '  -> Old link not removed :('
+		rm /usr/bin/wallpaper && echo '  -> Old link removed!' || echo '  -> Old link not removed :('
 	fi
 
 	echo '==> Linking script into /usr/bin'
