@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALLPAPER_CONFIG_DIR="${HOME}/.config/wallpaper-easthighNerd"
+WALLPAPER_CONFIG_DIR="${HOME}/.config/gwallpaper"
 
 DATETIME=$(date '+%Y/%m/%d-%T')
 
