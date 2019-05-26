@@ -20,7 +20,11 @@ where `<picture-uri>` is the local file or remote url you want to set as your wa
 
 You can use
 ```
+<<<<<<< HEAD
 $ wallpaper get
+=======
+wallpaper get
+>>>>>>> 1f66b8e39573a402220e22d0e0483b6e6e4e1b5d
 ```
 to see the location/url of the current wallpaper.
 
