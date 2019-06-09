@@ -27,11 +27,14 @@ if [[ ${1} = "set" ]]; then
     fi
 elif [[ ${1} = "get" ]]; then
     gsettings get org.gnome.desktop.background picture-uri
+elif [[ ${1} = "list" ]]; then
+    cat ${WALLPAPER_CONFIG_DIR}/picture-uri_list | less
 else
     echo 'Usage: wallpaper [OPTION]... [PICTURE-URI]...'
     echo 'Option:'
     echo '  set                              set the wallpaper to url/path (picture-uri)'
     echo '                                     of an image'
     echo '  get                              get the uri of the current wallpaper'
+    echo '  list                             see the list of wallpapers you have set'
 fi
 
