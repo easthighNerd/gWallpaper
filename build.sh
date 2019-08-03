@@ -26,14 +26,14 @@ if [ $USER = "root" ]; then
 		echo "ERROR: unable to copy source folder into /usr/lib/gwallpaper, directory does not exist!" && exit
 	fi
 
-	if [ -e /usr/bin/wallpaper ]; then
+	if [ -e /usr/bin/gwallpaper ]; then
 		echo '==> Removing old link...'
-		rm /usr/bin/wallpaper && echo '  -> Old link removed!' || echo '  -> Old link not removed :('
+		rm /usr/bin/gwallpaper && echo '  -> Old link removed!' || echo '  -> Old link not removed :('
 	fi
 
-	if [[ ! -e /usr/bin/wallpaper ]]; then
+	if [[ ! -e /usr/bin/gwallpaper ]]; then
 		echo '==> Linking script into /usr/bin...'
-		ln -s /usr/lib/gwallpaper/gwallpaper.sh /usr/bin/wallpaper && chmod +x /usr/bin/wallpaper && echo '  -> Linking complete!' || echo '  -> Linking failed :('
+		ln -s /usr/lib/gwallpaper/gwallpaper.sh /usr/bin/gwallpaper && chmod +x /usr/bin/gwallpaper && echo '  -> Linking complete!' || echo '  -> Linking failed :('
 	else
 		echo "ERROR: unable to link script into /usr/bin, file already exists!" && exit
 	fi

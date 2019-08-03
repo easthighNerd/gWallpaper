@@ -12,7 +12,7 @@ To build, cd into the directory and run
 
 To set a wallpaper, run
 ```
-$ wallpaper set <picture-uri>
+$ gwallpaper set <picture-uri>
 ```
 where `<picture-uri>` is the local file or remote url you want to set as your wallpaper.
 
@@ -20,7 +20,7 @@ where `<picture-uri>` is the local file or remote url you want to set as your wa
 
 You can use
 ```
-$ wallpaper get
+$ gwallpaper get
 ```
 to see the location/url of the current wallpaper.
 
