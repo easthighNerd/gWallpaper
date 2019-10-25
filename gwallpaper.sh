@@ -13,20 +13,28 @@ if [[ ! -e ${WALLPAPER_CONFIG_DIR}/picure-uri_list ]]; then
 fi
 
 if [[ $(cat ${WALLPAPER_CONFIG_DIR}/picture-uri_list) = "" ]]; then
-    echo "${DATETIME} - $(gsettings get org.gnome.desktop.background picture-uri)" > ${WALLPAPER_CONFIG_DIR}/picture-uri_list
+    echo "${DATETIME} - $(gsettings get ${GSETTING})" > ${WALLPAPER_CONFIG_DIR}/picture-uri_list
 fi
+
+if [[ ${XDG_CURRENT_DESKTOP} = 'MATE' ]]; then
+    GSETTING="org.mate.background picture-filename"
+else
+    GSETTING="org.gnome.desktop.background picture-uri"
+fi
+
+
 
 if [[ ${1} = "set" ]]; then
     if [[ -e ${2} ]]; then
-        gsettings set org.gnome.desktop.background picture-uri "file://${2}" && echo "${DATETIME} - $(gsettings get org.gnome.desktop.background picture-uri)" >> ${WALLPAPER_CONFIG_DIR}/picture-uri_list
+        gsettings set ${GSETTING} "file://${2}" && echo "${DATETIME} - $(gsettings get ${GSETTING})" >> ${WALLPAPER_CONFIG_DIR}/picture-uri_list
     elif [[ ${2} = https://* ]] || [[ ${2} = http://* ]]; then
-        gsettings set org.gnome.desktop.background picture-uri "${2}" && echo "${DATETIME} - $(gsettings get org.gnome.desktop.background picture-uri)" >> ${WALLPAPER_CONFIG_DIR}/picture-uri_list
+        gsettings set ${GSETTING} "${2}" && echo "${DATETIME} - $(gsettings get ${GSETTING})" >> ${WALLPAPER_CONFIG_DIR}/picture-uri_list
     else
         echo ''
         echo "ERROR: Invalid picture URI!"
     fi
 elif [[ ${1} = "get" ]]; then
-    gsettings get org.gnome.desktop.background picture-uri
+    gsettings get ${GSETTING}
 elif [[ ${1} = "list" ]]; then
     cat ${WALLPAPER_CONFIG_DIR}/picture-uri_list | less
 else
