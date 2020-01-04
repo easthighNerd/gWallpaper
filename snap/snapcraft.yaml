@@ -1,0 +1,35 @@
+name: gwallpaper # you probably want to 'snapcraft register <name>'
+base: core18 # the base snap is the execution environment for this snap
+version: 'git' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Script to set the wallpaper using gsettings # 79 char long summary
+description: |
+  Script to set the wallpaper using gsettings. This allows for using either a local image or a remote URL.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+parts:
+  gwallpaper:
+    # See 'snapcraft plugins'
+    source: .
+    plugin: dump
+    organize:
+      ./gwallpaper.sh: usr/bin/gwallpaper
+    # override-build: |
+      # ./build.sh
+    stage-packages:
+      - bash
+      - mate-desktop-common
+      # - dconf-gsettings-backend
+      # - dconf-service
+      # - gsettings-desktop-schemas
+      # - gsettings-ubuntu-schemas
+      # - libproxy1-plugin-gsettings
+    prime:
+      - -build.sh
+
+apps:
+  gwallpaper:
+    command: usr/bin/gwallpaper
+    plugs: [home, gsettings]
+    extensions: [gnome-3-28]
