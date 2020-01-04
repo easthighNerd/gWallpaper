@@ -27,3 +27,7 @@ to see the location/url of the current wallpaper.
 ---
 
 A history of wallpapers you have set using gWallpaper is saved in `$HOME/.config/gwallpaper/picture-uri_list`
+
+---
+
+Snap package does not work properly, so please build normally unless you want to fiddle with the yaml
